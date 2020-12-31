@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://wwww.thymeleaf.org"
+  xmlns:src="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+  <meta charset="UTF-8" />
+  <title>ホーム</title>
+</head>
+<body>
+  <h1>HOME</h1>
+  <p>
+    ユーザーID：<span sec:authentication="name"></span>
+  </p>
+  <p>
+    ロール：<span sec:authentication="principal.authorities"></span>
+  </p>
+  <p>
+    トークン名： <span th:text="${_csrf.parameterName}"></span><br/>
+    トークン値： <span th:text="${_csrf.token}"></span>
+  </p>
+  <form method="post" th:action="@{/logout}">
+    <button type="submit">ログアウト</button>
+  </form>
+</body>
+</html>
